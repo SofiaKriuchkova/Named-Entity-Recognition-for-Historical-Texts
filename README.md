@@ -1,4 +1,4 @@
-# Named Entity Recognition for Historical Texts (Estonian)
+# Named Entity Recognition in the Historical Meeting Protocols of the Tartu City Council (Estonian)
 
 This repository contains code and data for named entity recognition (NER) experiments on historical Estonian texts. The project covers data preprocessing, conversion into CoNLL format, dataset splitting, hyperparameter tuning, model training, and evaluation.
 
