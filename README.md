@@ -51,3 +51,6 @@ The main processing and training pipelines are implemented as standalone Python 
 
 Each step is implemented as a separate script in the `scripts/` directory.
 
+## The best model
+
+[est-roberta-hist-ner-for-tccp](https://huggingface.co/tartuNLP/est-roberta-hist-ner-for-tccp)
