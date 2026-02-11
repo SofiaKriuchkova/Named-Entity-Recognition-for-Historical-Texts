@@ -130,19 +130,10 @@ adapted_cp_tokens_tagger = make_adapted_cp_tagger(
 
 
 def preprocess_words(input_text):
-    """Pre-processes Text object: adds word segmentation and normalizes w->v."""
+    """Pre-processes Text object: adds word segmentation"""
     input_text.tag_layer('tokens')
     adapted_cp_tokens_tagger.tag(input_text)
     input_text.tag_layer('words')
-    
-    # Normalize w -> v
-    for word_span in input_text['words']:
-        word_text = word_span.text
-        if 'w' in word_text.lower():
-            word_span.clear_annotations()
-            word_norm = word_text.replace('w', 'v').replace('W', 'V')
-            word_span.add_annotation(normalized_form=word_norm)
-    
     return input_text
 
 
@@ -224,7 +215,7 @@ def convert_file_to_bio_sentences(file_path: str):
         for w in txt['words']:
             if w.start >= sent_span.start and w.end <= sent_span.end:
                 norm = w.annotations[0].get('normalized_form') if w.annotations else None
-                norm = (norm or w.text).replace("w", "v").replace("W", "V")
+                norm = norm or w.text
                 words.append({
                     "norm": norm,
                     "start": w.start,
@@ -437,7 +428,7 @@ def save_file_distribution(splits_data: dict, output_file='file_distribution.txt
 
         f.write("=" * 80 + "\n")
 
-    print(f"✓ File distribution saved to {output_file}")
+    print(f"File distribution saved to {output_file}")
 
 
 # ============================================================================
@@ -474,11 +465,11 @@ def main():
 
     print("\nWriting split files...")
     write_bio_file(splits_data['train']['data'], args.train_file)
-    print(f"  ✓ {args.train_file}")
+    print(f"{args.train_file}")
     write_bio_file(splits_data['dev']['data'], args.dev_file)
-    print(f"  ✓ {args.dev_file}")
+    print(f"{args.dev_file}")
     write_bio_file(splits_data['test']['data'], args.test_file)
-    print(f"  ✓ {args.test_file}")
+    print(f"{args.test_file}")
 
     print_statistics_table(splits_data)
 
@@ -487,11 +478,11 @@ def main():
         sys.stdout = f
         print_statistics_table(splits_data)
         sys.stdout = old_stdout
-    print(f"✓ Statistics saved to: corpus_statistics.txt")
+    print(f"Statistics saved to: corpus_statistics.txt")
 
     save_file_distribution(splits_data, 'file_distribution.txt')
 
-    print("\n✓ Train/dev/test split complete!")
+    print("\nTrain/dev/test split complete!")
     print("\nFiles created:")
     print(f"  - {args.train_file}")
     print(f"  - {args.dev_file}")
