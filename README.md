@@ -39,6 +39,8 @@ The `notebooks/` directory contains Jupyter notebooks used for:
 
 The main processing and training pipelines are implemented as standalone Python scripts in the `scripts/`  directory to ensure reproducibility.
 
+Experiments were run with Python 3.12; a minimal conda environment for reproduction is provided in `environment.yml`.
+
 
 ## Data processing pipeline
 
