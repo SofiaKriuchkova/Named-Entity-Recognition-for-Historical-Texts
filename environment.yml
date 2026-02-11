@@ -1,0 +1,17 @@
+name: ner_project
+channels:
+  - defaults
+dependencies:
+  - python=3.12
+  - numpy
+  - pandas
+  - pytorch
+  - regex
+  - tqdm
+  - pip
+  - pip:
+      - transformers
+      - datasets
+      - estnltk
+      - nervaluate
+
