@@ -53,6 +53,9 @@ Experiments were run with Python 3.12; a minimal conda environment for reproduct
 
 Each step is implemented as a separate script in the `scripts/` directory.
 
-## The best model
+## Results 
 
+The `results/` directory contains the results of all experiments and training runs for all models.
+
+**The best model** can be found at the following link:
 [est-roberta-hist-ner-for-tccp](https://huggingface.co/tartuNLP/est-roberta-hist-ner-for-tccp)
